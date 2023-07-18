@@ -22,19 +22,17 @@ public class Trigger : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         //otherとの位置の差の取得、それを逆向きにimpulseで放出する？
         //両方飛ばすからこのスクリプトはどちらかのみアタッチする
-        Debug.Log("pass01");
         var diff = transform.position - other.transform.position;
         var amp = diff * explode;
         var oppo = amp * -1;
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             GetComponent<Rigidbody>().AddForce(amp, ForceMode.Impulse);
-            other.GetComponent<Rigidbody>().AddForce(oppo, ForceMode.Impulse);
-            Debug.Log("pass02");
+            other.gameObject.GetComponent<Rigidbody>().AddForce(oppo, ForceMode.Impulse);
         }
         /*
          * パスしない。独楽をブレンダーからインポートしたあと、そのメッシュが丸のものに対して四角で届いたので、SAコリだ―を利用して
@@ -43,7 +41,13 @@ public class Trigger : MonoBehaviour
          * メッシュの位置が複雑、トリガーの発生条件はコリだ―が必須なのに親にない、子につけても意味ない←ｲﾏｺｺ
          * 親にトリガーしてもそもそもメッシュないから全く動かなさそう。
          * コリダ―をつかわない衝突方法を考えるか、メッシュの親オブジェクトのうまい貼り方をブレンダーとともに考えるか
-         * もしくはプロビルダーつかってユニティから脱出しないか
+         * もしくはプロビルダーつかってユニティで完結するか
+         * 
+         * メッシュを親につけて解決
+         * 
+         * 
+         * 
+         * triggerで起動したため物体同士がぶつからないというか、そもそもrbあたりの関係で透過させることが当然のようになっている
          * 
          * 
          */
