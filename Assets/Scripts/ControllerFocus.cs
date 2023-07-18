@@ -15,6 +15,7 @@ public class ControllerFocus : MonoBehaviour
      */
     public GameObject lever;
     [SerializeField] private float amplificatenum = 6;
+    [SerializeField] private Vector3 mid = new Vector3(45, 0, 0);
     void Start()
     {
         
@@ -23,7 +24,7 @@ public class ControllerFocus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var fromWP = (lever.transform.position - new Vector3(45, 0, 0)) * amplificatenum; // “G‚Ì‚Æ‚«•Ï‚¦‚é
+        var fromWP = (lever.transform.position - mid) * amplificatenum; // “G‚Ì‚Æ‚«•Ï‚¦‚é
         fromWP.y = 1;
         transform.position = fromWP;
     }

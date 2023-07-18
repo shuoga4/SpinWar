@@ -6,7 +6,7 @@ public class Clamp : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private float _maxRadius = 3;
-    private Vector3 mid = new Vector3(45,0,0); // “G‚Ì‚Æ‚«•Ï‚¦‚é
+    [SerializeField] private Vector3 mid = new Vector3(45,0,0); // “G‚Ì‚Æ‚«•Ï‚¦‚é
     void Start()
     {
        
