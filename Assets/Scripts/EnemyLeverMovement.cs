@@ -23,7 +23,7 @@ public class EnemyLeverMovement : MonoBehaviour
         var diff = new Vector3(0, 0, 0) - enemyBayblade.transform.position;
         var onediff = diff / diff.magnitude;
         var leverdiff = onediff * 3;
-        var result = leverdiff + new Vector3(-45,0,0);
+        var result = leverdiff + new Vector3(-38,0,0);
         result.y = 0.1f;
         transform.position = result;
     }

@@ -18,18 +18,29 @@ public class BeybladeMovement : MonoBehaviour
      * ‰ñ‚Á‚Ä‚éŠ´‚ÌŽÀ‘•
      */
     public GameObject focus;
+    public bool start = false;
+    public Canvas button;
     void Start()
     {
         
+    }
+    public void Starter()
+    {
+        start = true;
+        button.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        var diff = focus.transform.position - transform.position;
-        var onediff = diff / diff.magnitude;
-        var rb = GetComponent<Rigidbody>();
-        rb.AddForce(onediff, ForceMode.Force);
+        if(start == true)
+        {
+            var diff = focus.transform.position - transform.position;
+            var onediff = diff / diff.magnitude;
+            var rb = GetComponent<Rigidbody>();
+            rb.AddForce(onediff, ForceMode.Force);
+        }
+    
     }
  
 }
